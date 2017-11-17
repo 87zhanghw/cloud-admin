@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: server-config
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/87zhanghw/cloud-admin.git
+
+server:
+    port: 9001 #启动端口
+
+eureka:
+  #主页
+  instance:
+    hostname: localhost
+    home-page-url: http://${eureka.instance.hostname}:${server.port}/
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    service-url:
+      defaultZone: http://zhanghw:123456@${eureka.instance.hostname}:9000/eureka/
+#允许信息被监控
+management:
+  security:
+    enabled: false
